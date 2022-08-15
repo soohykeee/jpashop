@@ -18,7 +18,7 @@
             <property name="hibernate.use_sql_comments" value="true"/>
 
             <!--이러한 방식으로 생성하는 ddl은 개발장비에서만 사용하는 것이 권장-->
-            <!--<property name="hibernate.hbm2ddl.auto" value="create"/>-->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
         </properties>
     </persistence-unit>
 </persistence>
