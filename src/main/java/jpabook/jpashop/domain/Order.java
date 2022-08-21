@@ -15,7 +15,7 @@ public class Order extends BaseEntity{
     @Column(name = "ORDER_ID")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne  // 일대다에서 다(many) 쪽이 주인이라고 생각하면 된다.
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
@@ -25,7 +25,7 @@ public class Order extends BaseEntity{
 
     private LocalDateTime orderDate;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING) //EnumType.ORDINAL : enum 순서를 DB에 저장 -> 거의 사용 X, 주의필요
     private OrderStatus status;
 
     @OneToMany(mappedBy = "order")
