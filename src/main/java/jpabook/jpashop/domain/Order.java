@@ -15,11 +15,11 @@ public class Order extends BaseEntity{
     @Column(name = "ORDER_ID")
     private Long id;
 
-    @ManyToOne  // 일대다에서 다(many) 쪽이 주인이라고 생각하면 된다.
+    @ManyToOne(fetch = FetchType.LAZY)  // 일대다에서 다(many) 쪽이 주인이라고 생각하면 된다.
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "DELIVERY_ID")
     private Delivery delivery;
 
@@ -28,7 +28,7 @@ public class Order extends BaseEntity{
     @Enumerated(EnumType.STRING) //EnumType.ORDINAL : enum 순서를 DB에 저장 -> 거의 사용 X, 주의필요
     private OrderStatus status;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
 
