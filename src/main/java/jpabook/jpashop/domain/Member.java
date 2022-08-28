@@ -11,14 +11,10 @@ public class Member extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "MEMBER_ID")
     private Long id;
-
     private String name;
 
-    private String city;
-
-    private String street;
-
-    private String zipCode;
+    @Embedded
+    private Address address;
 
     /* ManyToOne에 대응하는 양방향 매핑을 할경우, mappedBy를 통해 대응되는 곳의 변수명을 입력해줘야한다.
     양방향 관계는 사실 단반향 관계 2개라고 생각하면 된다.
@@ -48,27 +44,19 @@ public class Member extends BaseEntity{
         this.name = name;
     }
 
-    public String getCity() {
-        return city;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public String getStreet() {
-        return street;
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }
